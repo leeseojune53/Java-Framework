@@ -25,6 +25,7 @@ public class UserService {
      * because @Transactional annotation is work with AOP.
      * if Controller call springServiceLayerMethod1() then, that's on the proxy class. like above doSomething() method.
      * but springServiceLayerMethod2() is call by proxy class. so @Transactional annotation is not work.
+     * read this : https://leeseojune53.tistory.com/75
      */
 //    public void springServiceLayerMethod1() {
 //        springServiceLayerMethod2();
