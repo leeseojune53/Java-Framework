@@ -1,4 +1,6 @@
-import db.SessionManager;
+package org.example;
+
+import org.example.db.SessionManager;
 
 public class RootApplication {
 
