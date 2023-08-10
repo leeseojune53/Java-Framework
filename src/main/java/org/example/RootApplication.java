@@ -9,11 +9,21 @@ public class RootApplication {
 
         // service layer
 
-        SessionManager.getSessionManager().get().getTransaction().begin();
+        SessionManager.setDefaultSessionManager();
+        SessionManager sessionManager = SessionManager.getSessionManager();
+        sessionManager.getTransaction().begin();
+
+        Object selectIdFromTblExtensionApply = sessionManager.getTransaction().getConnection().select("SELECT id FROM tbl_weekend_meal", IdClass.class);
+
+        sessionManager.getTransaction().commit();
 
         // business logic
 
-        SessionManager.getSessionManager().get().getTransaction().commit();
+
+    }
+
+    public static class IdClass {
+        public String id;
     }
 
 }

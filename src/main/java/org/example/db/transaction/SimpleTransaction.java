@@ -1,29 +1,37 @@
 package org.example.db.transaction;
 
-import org.example.db.connection.Connection;
+import org.example.db.connection.ArthurConnection;
+
+import java.sql.Connection;
 
 public class SimpleTransaction implements Transaction {
 
-    private final Connection connection;
+    private final ArthurConnection arthurConnection;
 
-    public SimpleTransaction(Connection connection) {
-        this.connection = connection;
+    public SimpleTransaction(ArthurConnection arthurConnection) {
+        this.arthurConnection = arthurConnection;
     }
 
     @Override
     public Transaction begin() {
+        arthurConnection.setAutoCommit(false);
         return this;
     }
 
     @Override
     public Transaction commit() {
-        connection.commit();
+        arthurConnection.commit();
         return this;
     }
 
     @Override
     public Transaction rollback() {
-        connection.rollback();
+        arthurConnection.rollback();
         return this;
+    }
+
+    @Override
+    public ArthurConnection getConnection() {
+        return arthurConnection;
     }
 }

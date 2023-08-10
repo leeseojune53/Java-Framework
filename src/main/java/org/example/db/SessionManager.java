@@ -6,14 +6,22 @@ import org.example.db.transaction.Transaction;
 
 public class SessionManager {
 
-    private static ThreadLocal<SessionManager> sessionManager = new ThreadLocal<SessionManager>();
+    private static final ThreadLocal<SessionManager> SESSION_MANAGER = new ThreadLocal<>();
     private SimpleTransaction transaction;
 
     public SessionManager() {
     }
 
-    public static ThreadLocal<SessionManager> getSessionManager() {
-        return sessionManager;
+    public static SessionManager getSessionManager() {
+        return SESSION_MANAGER.get();
+    }
+
+    public static void setDefaultSessionManager() {
+        SESSION_MANAGER.set(new SessionManager());
+    }
+
+    public static void setSessionManager(SessionManager sessionManager) {
+        SESSION_MANAGER.set(sessionManager);
     }
 
     public Transaction getTransaction() {

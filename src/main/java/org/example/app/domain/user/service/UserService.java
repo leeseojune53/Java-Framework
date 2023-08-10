@@ -1,6 +1,7 @@
 package org.example.app.domain.user.service;
 
 import org.example.db.SessionManager;
+import org.example.db.transaction.Transaction;
 
 public class UserService {
 
@@ -10,13 +11,14 @@ public class UserService {
       So if we use Spring, we don't need to write this code.
      */
     public void doSomething() {
-        SessionManager sessionManager = SessionManager.getSessionManager().get();
+        Transaction transaction = SessionManager.getSessionManager().getTransaction();
         try {
-            sessionManager.getTransaction().begin();
+            transaction.begin();
+            transaction.getConnection().select("select * from user", Object.class);
             // doSomething
-            sessionManager.getTransaction().commit();
+            transaction.commit();
         } catch(Exception e) {
-            sessionManager.getTransaction().rollback();
+            transaction.rollback();
         }
     }
 
