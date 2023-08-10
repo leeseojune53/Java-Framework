@@ -1,4 +1,4 @@
-package db.connection;
+package org.example.db.connection;
 
 public interface Connection {
     boolean isClose();

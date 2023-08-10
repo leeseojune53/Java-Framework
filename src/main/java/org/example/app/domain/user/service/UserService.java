@@ -1,6 +1,6 @@
-package app.domain.user.service;
+package org.example.app.domain.user.service;
 
-import db.SessionManager;
+import org.example.db.SessionManager;
 
 public class UserService {
 

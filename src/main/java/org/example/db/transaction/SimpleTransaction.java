@@ -1,6 +1,6 @@
-package db.transaction;
+package org.example.db.transaction;
 
-import db.connection.Connection;
+import org.example.db.connection.Connection;
 
 public class SimpleTransaction implements Transaction {
 
