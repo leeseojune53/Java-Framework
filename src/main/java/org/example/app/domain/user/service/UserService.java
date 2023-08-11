@@ -11,15 +11,7 @@ public class UserService {
       So if we use Spring, we don't need to write this code.
      */
     public void doSomething() {
-        Transaction transaction = SessionManager.getSessionManager().getTransaction();
-        try {
-            transaction.begin();
-            transaction.getConnection().select("select * from user", Object.class);
-            // doSomething
-            transaction.commit();
-        } catch(Exception e) {
-            transaction.rollback();
-        }
+        //doSomething
     }
 
     /**
