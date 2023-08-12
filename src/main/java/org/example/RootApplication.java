@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.aop.TransactionAOP;
 import org.example.app.domain.user.service.UserService;
 import org.example.app.domain.user.service.UserServiceCGLIB;
 import org.example.db.SessionManager;
@@ -11,17 +12,15 @@ public class RootApplication {
 
         // service layer
 
-        SessionManager.setDefaultSessionManager();
-        SessionManager sessionManager = SessionManager.getSessionManager();
-        sessionManager.getTransaction().begin();
+        var services = TransactionAOP.makeTransactionProxyClass();
 
-        Object selectIdFromTblExtensionApply = sessionManager.getTransaction().getConnection().select("SELECT id FROM tbl_weekend_meal", IdClass.class);
+        var proxyUserService = (UserService) services.get(UserService.class);
 
-        sessionManager.getTransaction().commit();
+        if(proxyUserService != null) {
+            proxyUserService.doSomething();
+        }
 
-        UserService userService = UserServiceCGLIB.getUserService();
 
-        userService.doSomething();
 
         // business logic
 
