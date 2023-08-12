@@ -13,6 +13,9 @@ public class SessionManager {
     }
 
     public static SessionManager getSessionManager() {
+        if(SESSION_MANAGER.get() == null) {
+            setDefaultSessionManager();
+        }
         return SESSION_MANAGER.get();
     }
 
