@@ -1,26 +1,21 @@
 package org.example.aop.multi;
 
-import net.sf.cglib.proxy.MethodInterceptor;
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
-public class QueryAnnotatedTarget {
-
-    public Function<MethodInterceptor, Object> aopFunction;
+public class AnnotationAOPProcessor {
 
     public final Map<Class, MultiCallback> annotationCallBackMap;
 
-    public QueryAnnotatedTarget(Map<Class, MultiCallback> annotationCallBackMap) {
+    public AnnotationAOPProcessor(Map<Class, MultiCallback> annotationCallBackMap) {
         this.annotationCallBackMap = annotationCallBackMap;
     }
 

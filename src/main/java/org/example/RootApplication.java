@@ -1,21 +1,14 @@
 package org.example;
 
-import net.sf.cglib.proxy.Callback;
-import net.sf.cglib.proxy.MethodInterceptor;
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
-import org.example.aop.ComponentAOP;
-import org.example.aop.TransactionAOP;
 import org.example.aop.multi.ClassMetadata;
-import org.example.aop.multi.MultiCallback;
-import org.example.aop.multi.QueryAnnotatedTarget;
+import org.example.aop.multi.AnnotationAOPProcessor;
 import org.example.app.domain.user.service.UserService;
-import org.example.app.domain.user.service.UserServiceCGLIB;
 import org.example.db.SessionManager;
 import org.example.db.transaction.Transaction;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RootApplication {
@@ -37,7 +30,7 @@ public class RootApplication {
 
         Map<Class, Object> services = new HashMap<>();
 
-        var annotationTarget = new QueryAnnotatedTarget(
+        var annotationTarget = new AnnotationAOPProcessor(
                 Map.of(
                         Component.class,
                         (obj, method, args, proxy, chain) -> {
