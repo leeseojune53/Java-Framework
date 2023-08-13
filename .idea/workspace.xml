@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="Transaction AOP implements">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="Component AOP implements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/annotataion/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/annotataion/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/ComponentAOP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/ComponentAOP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +151,7 @@
       <option name="presentableId" value="Default" />
       <updated>1691672113940</updated>
       <workItem from="1691672117430" duration="7082000" />
-      <workItem from="1691849541910" duration="4475000" />
+      <workItem from="1691849541910" duration="8873000" />
     </task>
     <task id="LOCAL-00001" summary="Project Directory Refactor">
       <option name="closed" value="true" />
@@ -237,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691851412125</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Component AOP implements">
+      <option name="closed" value="true" />
+      <created>1691921474202</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691921474202</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,14 +256,15 @@
     <MESSAGE value="Transactional annotation restrict use only method" />
     <MESSAGE value="Get Session Exception handling" />
     <MESSAGE value="Transaction AOP implements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transaction AOP implements" />
+    <MESSAGE value="Component AOP implements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Component AOP implements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>25</line>
+          <line>56</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -279,18 +284,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>21</line>
+          <line>28</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>20</line>
+          <line>27</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/db/SessionManager.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
@@ -298,5 +303,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.KeyValueHolder" memberName="key" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
