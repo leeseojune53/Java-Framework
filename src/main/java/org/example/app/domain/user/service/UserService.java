@@ -1,9 +1,11 @@
 package org.example.app.domain.user.service;
 
+import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
 import org.example.db.SessionManager;
 import org.example.db.transaction.Transaction;
 
+@Component
 public class UserService {
 
     /*
@@ -11,7 +13,7 @@ public class UserService {
       and Spring use AOP for this. (CGLIB)
       So if we use Spring, we don't need to write this code.
      */
-    @Transactional
+//    @Transactional
     public void doSomething() {
         System.out.println("HIHI");
         //doSomething

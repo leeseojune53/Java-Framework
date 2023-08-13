@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.aop.ComponentAOP;
 import org.example.aop.TransactionAOP;
 import org.example.app.domain.user.service.UserService;
 import org.example.app.domain.user.service.UserServiceCGLIB;
@@ -12,7 +13,8 @@ public class RootApplication {
 
         // service layer
 
-        var services = TransactionAOP.makeTransactionProxyClass();
+        var components = ComponentAOP.makeComponent();
+        var services = TransactionAOP.makeTransactionProxyClass(components);
 
         var proxyUserService = (UserService) services.get(UserService.class);
 

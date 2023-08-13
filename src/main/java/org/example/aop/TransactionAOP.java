@@ -19,13 +19,11 @@ public class TransactionAOP {
     private static Map<Class, List<Method>> transactionProxyClassMap = new HashMap<>();
 
     // 스프링은 일단 ProxyService를 만들고, AOP를 적용해야하면 다시 만들었나?
-    public static Map<Class, Object> makeTransactionProxyClass() {
+    public static Map<Class, Object> makeTransactionProxyClass(Map<Class, Object> proxyServices) {
         var methods =  new Reflections("org.example", Scanners.MethodsAnnotated).getMethodsAnnotatedWith(Transactional.class);
         for(Method method : methods) {
             transactionProxyClassMap.computeIfAbsent(method.getDeclaringClass(), k -> new ArrayList<>()).add(method);
         }
-
-        Map<Class, Object> proxyServices = new HashMap<>();
 
         for(Class clazz : transactionProxyClassMap.keySet()) {
             proxyServices.put(clazz, getTransactionProxyClass(clazz, transactionProxyClassMap.get(clazz)));
