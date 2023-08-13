@@ -1,9 +1,11 @@
 package org.example;
 
+import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.example.aop.ComponentAOP;
 import org.example.aop.TransactionAOP;
 import org.example.aop.multi.ClassMetadata;
+import org.example.aop.multi.MultiCallback;
 import org.example.app.domain.user.service.UserService;
 import org.example.app.domain.user.service.UserServiceCGLIB;
 import org.example.db.SessionManager;
@@ -15,7 +17,8 @@ import java.util.Map;
 
 public class RootApplication {
 
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] argss
+    ) throws NoSuchMethodException {
 
 
         // service layer
@@ -29,28 +32,32 @@ public class RootApplication {
 //            proxyUserService.doSomething();
 //        }
 
+        MultiCallback c1 = (obj, method, args, proxy, chain) -> {
+            System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + " Component Annotated Method");
+            chain.next(obj, method, args, proxy);
+            return null;
+        };
+
+        MultiCallback c2 = (obj, method, args, proxy, chain) -> {
+            Transaction transaction = SessionManager.getSessionManager().getTransaction();
+            try {
+                transaction.begin();
+                System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + "CGLIB Transaction Begin");
+                transaction.getConnection().select("SELECT id FROM tbl_weekend_meal", Object.class);
+                chain.next(obj, method, args, proxy);
+                transaction.commit();
+                System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + "CGLIB Transaction Commit");
+                return null;
+            } catch(Exception e) {
+                transaction.rollback();
+                throw new RuntimeException();
+            }
+        };
+
 
         UserService service = (UserService) ClassMetadata.getProxy(UserService.class, Map.of(
                 UserService.class.getMethod("doSomething"),
-                List.of((obj, method, argss, proxy) -> {
-                    System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + " Component Annotated Method");
-                    return null;
-                },
-                        (obj, method, argss, proxy) -> {
-                                Transaction transaction = SessionManager.getSessionManager().getTransaction();
-                                try {
-                                    transaction.begin();
-                                    System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + "CGLIB Transaction Begin");
-                                    transaction.getConnection().select("SELECT id FROM tbl_weekend_meal", Object.class);
-                                    Object result = proxy.invokeSuper(obj, args);
-                                    transaction.commit();
-                                    System.out.println("Class: " + obj.getClass().getName() + "  Method : " + method.getName() + "CGLIB Transaction Commit");
-                                    return result;
-                                } catch(Exception e) {
-                                    transaction.rollback();
-                                    throw new RuntimeException();
-                                }
-                        })
+                List.of(c1, c2)
         ));
 
         service.doSomething();
