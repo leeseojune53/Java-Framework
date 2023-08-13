@@ -13,10 +13,14 @@ public class UserService {
       and Spring use AOP for this. (CGLIB)
       So if we use Spring, we don't need to write this code.
      */
-//    @Transactional
     public void doSomething() {
         System.out.println("HIHI");
         //doSomething
+    }
+
+    @Transactional
+    public void doSomethingWithTransaction() {
+        System.out.println("HIHI With Transaction");
     }
 
     /**

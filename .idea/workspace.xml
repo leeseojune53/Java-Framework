@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="Callback Composite Research">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="MethodChain..? Is It solution?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/AopMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/QueryAnnotatedTarget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1691672113940</updated>
       <workItem from="1691672117430" duration="7082000" />
-      <workItem from="1691849541910" duration="12732000" />
+      <workItem from="1691849541910" duration="15382000" />
     </task>
     <task id="LOCAL-00001" summary="Project Directory Refactor">
       <option name="closed" value="true" />
@@ -251,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691934998608</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="MethodChain..? Is It solution?">
+      <option name="closed" value="true" />
+      <created>1691938937678</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1691938937678</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,14 +277,15 @@
     <MESSAGE value="Transaction AOP implements" />
     <MESSAGE value="Component AOP implements" />
     <MESSAGE value="Callback Composite Research" />
-    <option name="LAST_COMMIT_MESSAGE" value="Callback Composite Research" />
+    <MESSAGE value="MethodChain..? Is It solution?" />
+    <option name="LAST_COMMIT_MESSAGE" value="MethodChain..? Is It solution?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>63</line>
+          <line>80</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -295,17 +305,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>31</line>
+          <line>33</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>30</line>
+          <line>32</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserService.java</url>
-          <line>17</line>
+          <line>16</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -345,33 +355,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="36" />
+          <line>73</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
