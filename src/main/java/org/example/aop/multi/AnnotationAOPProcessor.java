@@ -20,7 +20,7 @@ public class AnnotationAOPProcessor {
     }
 
 
-    public Map<Class, Map<Method, List<MultiCallback>>> getMethodAopFunction(Class clazz) {
+    public Map<Class, Map<Method, List<MultiCallback>>> getMethodAopFunction() {
         Map<Class, Map<Method, List<MultiCallback>>> result = new HashMap<>();
 
         // Type annotation handling

@@ -4,6 +4,7 @@ import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
 import org.example.aop.multi.ClassMetadata;
 import org.example.aop.multi.AnnotationAOPProcessor;
+import org.example.app.domain.auth.service.AuthService;
 import org.example.app.domain.user.service.UserService;
 import org.example.db.SessionManager;
 import org.example.db.transaction.Transaction;
@@ -59,19 +60,22 @@ public class RootApplication {
                 )
         );
 
-        var aopFunction = annotationTarget.getMethodAopFunction(UserService.class);
+        var aopFunction = annotationTarget.getMethodAopFunction();
 
         for(var key : aopFunction.keySet()) {
-            services.put(key, ClassMetadata.getProxy(key, aopFunction.get(key)));
+            services.put(key, ClassMetadata.getProxy(key, aopFunction.get(key), services));
         }
 
-        UserService service = (UserService) services.get(UserService.class);
+        UserService userService = (UserService) services.get(UserService.class);
+        AuthService authService = (AuthService) services.get(AuthService.class);
 
-        service.doSomething();
+        userService.doSomething();
 
         System.out.println("=====================================");
 
-        service.doSomethingWithTransaction();
+        userService.doSomethingWithTransaction();
+
+        authService.doSomething();
 
         // business logic
 
