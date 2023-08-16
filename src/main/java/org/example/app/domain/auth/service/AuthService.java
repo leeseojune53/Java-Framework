@@ -6,7 +6,7 @@ import org.example.app.domain.user.service.UserService;
 @Component
 public class AuthService {
 
-    private final UserService userService;
+    public final UserService userService;
 
     public AuthService(UserService userService) {
         this.userService = userService;

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="MethodChain..? Is It solution?">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="DI progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/AnnotationAOPProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/AnnotationAOPProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/ProxyUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/app/domain/auth/service/AuthService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,11 +260,30 @@
       <option name="project" value="LOCAL" />
       <updated>1691938937678</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="DI progress">
+      <option name="closed" value="true" />
+      <created>1692110088910</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692110088910</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project Directory Refactor" />
@@ -279,14 +297,15 @@
     <MESSAGE value="Component AOP implements" />
     <MESSAGE value="Callback Composite Research" />
     <MESSAGE value="MethodChain..? Is It solution?" />
-    <option name="LAST_COMMIT_MESSAGE" value="MethodChain..? Is It solution?" />
+    <MESSAGE value="DI progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="DI progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>84</line>
+          <line>94</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -306,18 +325,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>75</line>
+          <line>81</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
-          <line>46</line>
+          <line>65</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="58" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
@@ -330,5 +354,10 @@
         <PinnedItemInfo parentTag="java.util.KeyValueHolder" memberName="key" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="proxyParts.get(1)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -4,12 +4,15 @@ import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
 import org.example.aop.multi.ClassMetadata;
 import org.example.aop.multi.AnnotationAOPProcessor;
+import org.example.aop.multi.ClassMetadata.ProxyPart;
 import org.example.app.domain.auth.service.AuthService;
 import org.example.app.domain.user.service.UserService;
 import org.example.db.SessionManager;
 import org.example.db.transaction.Transaction;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RootApplication {
@@ -28,8 +31,6 @@ public class RootApplication {
 //        if(proxyUserService != null) {
 //            proxyUserService.doSomething();
 //        }
-
-        Map<Class, Object> services = new HashMap<>();
 
         var annotationTarget = new AnnotationAOPProcessor(
                 Map.of(
@@ -62,9 +63,14 @@ public class RootApplication {
 
         var aopFunction = annotationTarget.getMethodAopFunction();
 
+        List<ProxyPart> proxyParts = new ArrayList<>();
         for(var key : aopFunction.keySet()) {
-            services.put(key, ClassMetadata.getProxy(key, aopFunction.get(key), services));
+            proxyParts.add(new ProxyPart(key, aopFunction.get(key)));
         }
+
+        Map<Class, Object> services = new HashMap<>(ClassMetadata.getProxy(proxyParts));
+
+
 
         UserService userService = (UserService) services.get(UserService.class);
         AuthService authService = (AuthService) services.get(AuthService.class);
@@ -75,7 +81,11 @@ public class RootApplication {
 
         userService.doSomethingWithTransaction();
 
+        System.out.println(userService.getClass().getName());
+        System.out.println(authService.userService.getClass().getName());
+
         authService.doSomething();
+
 
         // business logic
 
