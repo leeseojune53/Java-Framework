@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="DI progress">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="If Dependency(Service) is not exist, re-try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" afterDir="false" />
@@ -268,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692110088910</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="If Dependency(Service) is not exist, re-try">
+      <option name="closed" value="true" />
+      <created>1692195525344</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1692195525344</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,16 +306,12 @@
     <MESSAGE value="Callback Composite Research" />
     <MESSAGE value="MethodChain..? Is It solution?" />
     <MESSAGE value="DI progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="DI progress" />
+    <MESSAGE value="If Dependency(Service) is not exist, re-try" />
+    <option name="LAST_COMMIT_MESSAGE" value="If Dependency(Service) is not exist, re-try" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java</url>
           <line>37</line>
@@ -324,24 +328,9 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RootApplication.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
-          <line>65</line>
+          <line>22</line>
           <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />

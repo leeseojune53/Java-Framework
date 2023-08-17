@@ -5,6 +5,7 @@ import org.example.annotataion.Transactional;
 import org.example.aop.multi.ClassMetadata;
 import org.example.aop.multi.AnnotationAOPProcessor;
 import org.example.aop.multi.ClassMetadata.ProxyPart;
+import org.example.app.domain.apply.service.ApplyService;
 import org.example.app.domain.auth.service.AuthService;
 import org.example.app.domain.user.service.UserService;
 import org.example.db.SessionManager;
@@ -17,20 +18,8 @@ import java.util.Map;
 
 public class RootApplication {
 
-    public static void main(String[] argss
-    ) throws NoSuchMethodException {
+    public static void main(String[] argss) {
 
-
-        // service layer
-
-//        var components = ComponentAOP.makeComponent();
-//        var services = TransactionAOP.makeTransactionProxyClass(components);
-//
-//        var proxyUserService = (UserService) services.get(UserService.class);
-//
-//        if(proxyUserService != null) {
-//            proxyUserService.doSomething();
-//        }
 
         var annotationTarget = new AnnotationAOPProcessor(
                 Map.of(
@@ -68,32 +57,13 @@ public class RootApplication {
             proxyParts.add(new ProxyPart(key, aopFunction.get(key)));
         }
 
-        Map<Class, Object> services = new HashMap<>(ClassMetadata.getProxy(proxyParts));
+        Map<Class, Object> applicationContext = new HashMap<>(ClassMetadata.getProxy(proxyParts));
+
+        ApplyService applyService = (ApplyService) applicationContext.get(ApplyService.class);
 
 
+        applyService.dependencyInjectionSuccess();
 
-        UserService userService = (UserService) services.get(UserService.class);
-        AuthService authService = (AuthService) services.get(AuthService.class);
-
-        userService.doSomething();
-
-        System.out.println("=====================================");
-
-        userService.doSomethingWithTransaction();
-
-        System.out.println(userService.getClass().getName());
-        System.out.println(authService.userService.getClass().getName());
-
-        authService.doSomething();
-
-
-        // business logic
-
-
-    }
-
-    public static class IdClass {
-        public String id;
     }
 
 }
