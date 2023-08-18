@@ -57,7 +57,7 @@ public class RootApplication {
             proxyParts.add(new ProxyPart(key, aopFunction.get(key)));
         }
 
-        Map<Class, Object> applicationContext = new HashMap<>(ClassMetadata.getProxy(proxyParts));
+        Map<Class, Object> applicationContext = ClassMetadata.getProxy(proxyParts);
 
         ApplyService applyService = (ApplyService) applicationContext.get(ApplyService.class);
 
