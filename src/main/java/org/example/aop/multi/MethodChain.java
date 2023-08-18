@@ -16,7 +16,7 @@ public class MethodChain {
     }
 
     public boolean next(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy) {
-        if(index < callbacks.size()) {
+        if (index < callbacks.size()) {
             callbacks.get(index++).intercept(obj, method, args, proxy, this);
         } else {
             try {
@@ -24,9 +24,7 @@ public class MethodChain {
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
-
         }
         return false;
     }
-
 }

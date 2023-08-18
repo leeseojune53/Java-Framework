@@ -24,7 +24,7 @@ public class ClassMetadata {
 
     private static void getProxyParts(List<ProxyPart> proxyParts, Map<Class, Object> proxyServices, int size) {
         List<ProxyPart> retryList = new ArrayList<>();
-        for(ProxyPart proxyPart : proxyParts) {
+        for (ProxyPart proxyPart : proxyParts) {
             var enhancer = new Enhancer();
 
             enhancer.setSuperclass(proxyPart.clazz);
@@ -39,28 +39,30 @@ public class ClassMetadata {
 
             Set<Class> constructorArgs = new HashSet<>();
 
-            for(var constructor : proxyPart.getConstructors()) {
-                for(var parameter : constructor.getParameters()) {
+            for (var constructor : proxyPart.getConstructors()) {
+                for (var parameter : constructor.getParameters()) {
                     constructorArgs.add(parameter.getType());
                 }
             }
 
             List<Object> constructorArgsList = new ArrayList<>();
 
-            for(var constructorClass : constructorArgs) {
-                if(proxyServices.get(constructorClass) != null)
+            for (var constructorClass : constructorArgs) {
+                if (proxyServices.get(constructorClass) != null)
                     constructorArgsList.add(proxyServices.get(constructorClass));
             }
 
-            if(constructorArgs.size() != constructorArgsList.size()) {
+            if (constructorArgs.size() != constructorArgsList.size()) {
                 retryList.add(proxyPart);
                 continue;
             }
 
-            proxyServices.put(proxyPart.clazz, enhancer.create(constructorArgs.toArray(new Class[]{}), constructorArgsList.toArray()));
+            proxyServices.put(
+                    proxyPart.clazz,
+                    enhancer.create(constructorArgs.toArray(new Class[] {}), constructorArgsList.toArray()));
         }
 
-        if(proxyServices.keySet().size() != size) {
+        if (proxyServices.keySet().size() != size) {
             getProxyParts(retryList, proxyServices, size);
         }
     }
@@ -90,5 +92,4 @@ public class ClassMetadata {
             return methodAopFunction.getOrDefault(method, List.of());
         }
     }
-
 }

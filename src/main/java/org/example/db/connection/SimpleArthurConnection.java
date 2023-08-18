@@ -54,7 +54,6 @@ public class SimpleArthurConnection implements ArthurConnection {
             this.rollback();
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -82,11 +81,11 @@ public class SimpleArthurConnection implements ArthurConnection {
             List result = new ArrayList();
 
             List<String> fieldNames = new ArrayList<>();
-            for(Field field : clazz.getFields()) {
+            for (Field field : clazz.getFields()) {
                 fieldNames.add(field.getName());
             }
             while (resultSet.next()) {
-                for(String fieldName : fieldNames) {
+                for (String fieldName : fieldNames) {
                     result.add(resultSet.getObject(fieldName));
                 }
             }
@@ -95,6 +94,5 @@ public class SimpleArthurConnection implements ArthurConnection {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

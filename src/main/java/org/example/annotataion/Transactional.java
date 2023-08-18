@@ -1,9 +1,8 @@
 package org.example.annotataion;
 
-import java.lang.annotation.Target;
-
 import static java.lang.annotation.ElementType.METHOD;
 
+import java.lang.annotation.Target;
+
 @Target({METHOD})
-public @interface Transactional {
-}
+public @interface Transactional {}

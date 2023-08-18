@@ -2,20 +2,18 @@ package org.example.app.domain.user.service;
 
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
-import org.example.db.SessionManager;
-import org.example.db.transaction.Transaction;
 
 @Component
 public class UserService {
 
     /*
-      This method code is Similar Spring's @Transactional annotation.
-      and Spring use AOP for this. (CGLIB)
-      So if we use Spring, we don't need to write this code.
-     */
+     This method code is Similar Spring's @Transactional annotation.
+     and Spring use AOP for this. (CGLIB)
+     So if we use Spring, we don't need to write this code.
+    */
     public void doSomething() {
         System.out.println("HIHI");
-        //doSomething
+        // doSomething
     }
 
     @Transactional
@@ -30,15 +28,14 @@ public class UserService {
      * but springServiceLayerMethod2() is call by proxy class. so @Transactional annotation is not work.
      * read this : https://leeseojune53.tistory.com/75
      */
-//    public void springServiceLayerMethod1() {
-//        springServiceLayerMethod2();
-//        // doSomething
-//    }
-//
-//    @Transactional
-//    public void springServiceLayerMethod2() {
-//        // doSomething
-//    }
-
+    //    public void springServiceLayerMethod1() {
+    //        springServiceLayerMethod2();
+    //        // doSomething
+    //    }
+    //
+    //    @Transactional
+    //    public void springServiceLayerMethod2() {
+    //        // doSomething
+    //    }
 
 }

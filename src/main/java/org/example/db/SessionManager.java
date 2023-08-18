@@ -9,11 +9,10 @@ public class SessionManager {
     private static final ThreadLocal<SessionManager> SESSION_MANAGER = new ThreadLocal<>();
     private SimpleTransaction transaction;
 
-    public SessionManager() {
-    }
+    public SessionManager() {}
 
     public static SessionManager getSessionManager() {
-        if(SESSION_MANAGER.get() == null) {
+        if (SESSION_MANAGER.get() == null) {
             setDefaultSessionManager();
         }
         return SESSION_MANAGER.get();
@@ -28,13 +27,10 @@ public class SessionManager {
     }
 
     public Transaction getTransaction() {
-        if(transaction == null)
-            transaction = new SimpleTransaction(ConnectionFactory.getConnection());
+        if (transaction == null) transaction = new SimpleTransaction(ConnectionFactory.getConnection());
 
         return transaction;
     }
 
-    public void close() {
-    }
-
+    public void close() {}
 }

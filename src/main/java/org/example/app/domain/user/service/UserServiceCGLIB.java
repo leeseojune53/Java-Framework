@@ -2,6 +2,7 @@ package org.example.app.domain.user.service;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
+
 import org.example.db.SessionManager;
 import org.example.db.transaction.Transaction;
 
@@ -18,11 +19,10 @@ public class UserServiceCGLIB {
                 transaction.commit();
                 System.out.println("User Service CGLIB Transaction Commit");
                 return result;
-            } catch(Exception e) {
+            } catch (Exception e) {
                 transaction.rollback();
                 throw new RuntimeException();
             }
         });
     }
-
 }

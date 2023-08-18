@@ -19,13 +19,10 @@ public class ConnectionFactory {
 
     private static Connection getRealConnection() {
         try {
-            return DriverManager
-                    .getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?"
-                            + "user=" + USER + "&password=" + PASSWORD);
+            return DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?" + "user="
+                    + USER + "&password=" + PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }

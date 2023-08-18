@@ -2,11 +2,13 @@ package org.example.aop;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import org.example.annotataion.Component;
+
 import org.reflections.Reflections;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.example.annotataion.Component;
 
 public class ComponentAOP {
 
@@ -15,7 +17,7 @@ public class ComponentAOP {
 
         Map<Class, Object> components = new HashMap<>();
 
-        for(Class clazz : classes) {
+        for (Class clazz : classes) {
             components.put(clazz, getComponent(clazz));
         }
 
@@ -24,9 +26,9 @@ public class ComponentAOP {
 
     private static Object getComponent(Class clazz) {
         return Enhancer.create(clazz, (MethodInterceptor) (obj, method, args, proxy) -> {
-            System.out.println("Class: " + clazz.getName() + "  Method : " + method.getName() + " Component Annotated Method");
+            System.out.println(
+                    "Class: " + clazz.getName() + "  Method : " + method.getName() + " Component Annotated Method");
             return proxy.invokeSuper(obj, args);
         });
     }
-
 }

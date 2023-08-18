@@ -17,7 +17,6 @@ public class AuthService {
     public void getUser() {
         System.out.println("Auth HIHI");
         userService.doSomethingWithTransaction();
-        //doSomething
+        // doSomething
     }
-
 }

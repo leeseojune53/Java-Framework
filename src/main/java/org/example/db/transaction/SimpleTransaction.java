@@ -2,8 +2,6 @@ package org.example.db.transaction;
 
 import org.example.db.connection.ArthurConnection;
 
-import java.sql.Connection;
-
 public class SimpleTransaction implements Transaction {
 
     private final ArthurConnection arthurConnection;
