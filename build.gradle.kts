@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("cglib:cglib:3.3.0")
+    implementation("net.bytebuddy:byte-buddy:1.14.6")
     implementation("org.reflections:reflections:0.10.2")
     implementation("mysql:mysql-connector-java:8.0.33")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
