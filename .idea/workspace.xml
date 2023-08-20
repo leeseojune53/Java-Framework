@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="Improve">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="CGLIB to ByteBuddy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/ComponentAOP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MethodChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MethodChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserServiceCGLIB.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +81,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
@@ -154,7 +159,7 @@
       <workItem from="1691672117430" duration="7082000" />
       <workItem from="1691849541910" duration="15382000" />
       <workItem from="1692347946134" duration="1986000" />
-      <workItem from="1692362049397" duration="429000" />
+      <workItem from="1692362049397" duration="4092000" />
     </task>
     <task id="LOCAL-00001" summary="Project Directory Refactor">
       <option name="closed" value="true" />
@@ -292,7 +297,23 @@
       <option name="project" value="LOCAL" />
       <updated>1692362097250</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add Spotless And Apply">
+      <option name="closed" value="true" />
+      <created>1692362526555</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1692362526555</updated>
+    </task>
+    <task id="LOCAL-00019" summary="CGLIB to ByteBuddy">
+      <option name="closed" value="true" />
+      <created>1692526377399</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1692526377399</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,30 +346,22 @@
     <MESSAGE value="If Dependency(Service) is not exist, re-try" />
     <MESSAGE value="Dependency Injection Implements" />
     <MESSAGE value="Improve" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve" />
+    <MESSAGE value="Add Spotless And Apply" />
+    <MESSAGE value="CGLIB to ByteBuddy" />
+    <option name="LAST_COMMIT_MESSAGE" value="CGLIB to ByteBuddy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java</url>
-          <line>22</line>
+          <line>21</line>
           <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/TransactionalInterceptor.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />

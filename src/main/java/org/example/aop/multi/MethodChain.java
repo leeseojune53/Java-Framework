@@ -1,7 +1,8 @@
 package org.example.aop.multi;
 
-import net.sf.cglib.proxy.MethodProxy;
+import net.bytebuddy.implementation.bind.annotation.SuperMethod;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class MethodChain {
@@ -15,12 +16,12 @@ public class MethodChain {
         this.callbacks = callbacks;
     }
 
-    public boolean next(Object obj, java.lang.reflect.Method method, Object[] args, MethodProxy proxy) {
+    public boolean next(Object obj, java.lang.reflect.Method method, Object[] args, @SuperMethod Method proxy) {
         if (index < callbacks.size()) {
             callbacks.get(index++).intercept(obj, method, args, proxy, this);
         } else {
             try {
-                proxy.invokeSuper(obj, args);
+                proxy.invoke(obj, args);
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
