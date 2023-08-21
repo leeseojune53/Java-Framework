@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="CGLIB to ByteBuddy">
+    <list default="true" id="8e8f6ced-56ed-44ab-abe7-1d0c866fa869" name="Changes" comment="CGLIB to ByteBuddy Migration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/ComponentAOP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/TransactionAOP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/ClassMetadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MethodChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MethodChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/domain/user/service/UserServiceCGLIB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiProxyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/aop/multi/MultiProxyFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -159,7 +153,7 @@
       <workItem from="1691672117430" duration="7082000" />
       <workItem from="1691849541910" duration="15382000" />
       <workItem from="1692347946134" duration="1986000" />
-      <workItem from="1692362049397" duration="4092000" />
+      <workItem from="1692362049397" duration="5916000" />
     </task>
     <task id="LOCAL-00001" summary="Project Directory Refactor">
       <option name="closed" value="true" />
@@ -313,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692526377399</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="CGLIB to ByteBuddy Migration">
+      <option name="closed" value="true" />
+      <created>1692528093260</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1692528093260</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +350,8 @@
     <MESSAGE value="Improve" />
     <MESSAGE value="Add Spotless And Apply" />
     <MESSAGE value="CGLIB to ByteBuddy" />
-    <option name="LAST_COMMIT_MESSAGE" value="CGLIB to ByteBuddy" />
+    <MESSAGE value="CGLIB to ByteBuddy Migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="CGLIB to ByteBuddy Migration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -362,6 +365,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/TransactionalInterceptor.java</url>
           <line>19</line>
           <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/aop/multi/TransactionalInterceptor.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />

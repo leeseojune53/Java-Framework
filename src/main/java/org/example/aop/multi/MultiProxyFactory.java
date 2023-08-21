@@ -22,7 +22,20 @@ public class MultiProxyFactory {
 
         var service = (UserService) buddy.newInstance();
 
-        service.doSomethingWithTransaction();
+        var buddy2 = new ByteBuddy()
+                .subclass(service.getClass())
+                .method(ElementMatchers.any())
+                .intercept(MethodDelegation.to(ComponentInterceptor.class))
+                .make()
+                .load(UserService.class.getClassLoader())
+                .getLoaded();
+
+        var service2 = (UserService) buddy2.newInstance();
+
+        service2.doSomethingWithTransaction();
+
+//        service.doSomethingWithTransaction();
+
 
         return null;
 
