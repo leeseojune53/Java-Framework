@@ -15,24 +15,15 @@ public class MultiProxyFactory {
         var buddy = new ByteBuddy()
                 .subclass(clazz)
                 .method(ElementMatchers.any())
-                .intercept(MethodDelegation.to(TransactionalInterceptor.class))
+                .intercept(MethodDelegation.to(TransactionalInterceptor.class)
+                        .andThen(MethodDelegation.to(ComponentInterceptor.class)))
                 .make()
                 .load(UserService.class.getClassLoader())
                 .getLoaded();
 
         var service = (UserService) buddy.newInstance();
 
-        var buddy2 = new ByteBuddy()
-                .subclass(service.getClass())
-                .method(ElementMatchers.any())
-                .intercept(MethodDelegation.to(ComponentInterceptor.class))
-                .make()
-                .load(UserService.class.getClassLoader())
-                .getLoaded();
-
-        var service2 = (UserService) buddy2.newInstance();
-
-        service2.doSomethingWithTransaction();
+        service.doSomethingWithTransaction();
 
 //        service.doSomethingWithTransaction();
 
