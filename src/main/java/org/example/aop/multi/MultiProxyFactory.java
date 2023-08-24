@@ -3,8 +3,7 @@ package org.example.aop.multi;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
-import org.example.annotataion.Transactional;
-import org.example.aop.multi.ClassMetadata.ProxyPart;
+
 import org.example.app.domain.user.service.UserService;
 
 public class MultiProxyFactory {
@@ -25,11 +24,8 @@ public class MultiProxyFactory {
 
         service.doSomethingWithTransaction();
 
-//        service.doSomethingWithTransaction();
-
+        //        service.doSomethingWithTransaction();
 
         return null;
-
     }
-
 }
