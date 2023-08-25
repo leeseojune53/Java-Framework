@@ -38,10 +38,10 @@ public class InterceptorChain {
         }
 
         //before
-        superMethod.invoke(self, args);
+        var result = superMethod.invoke(self, args);
         //after
 
-
+        return result;
     }
 
 }
