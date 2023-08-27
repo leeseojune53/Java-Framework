@@ -19,6 +19,9 @@ public class UserService {
     @Transactional
     public void doSomethingWithTransaction() {
         System.out.println("HIHI With Transaction");
+
+        // execute query
+
     }
 
     /**
