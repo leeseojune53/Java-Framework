@@ -1,5 +1,7 @@
 package org.example.db.connection;
 
+import java.util.List;
+
 public interface ArthurConnection {
     boolean isClose();
 
@@ -7,7 +9,7 @@ public interface ArthurConnection {
 
     void setAutoCommit(boolean autoCommit);
 
-    Object select(String query, Class<?> clazz);
+    List<Object> select(String query, Class<?> clazz);
 
     void commit();
 

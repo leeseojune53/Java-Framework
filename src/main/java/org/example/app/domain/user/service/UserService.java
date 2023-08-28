@@ -2,9 +2,12 @@ package org.example.app.domain.user.service;
 
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
+import org.example.app.domain.user.repository.UserRepository;
 
 @Component
 public class UserService {
+
+    private final UserRepository userRepository = new UserRepository();
 
     /*
      This method code is Similar Spring's @Transactional annotation.
@@ -12,6 +15,10 @@ public class UserService {
      So if we use Spring, we don't need to write this code.
     */
     public void doSomething() {
+        var user = userRepository.findByUserId("TEST");
+
+        System.out.println(user.getName());
+
         System.out.println("HIHI");
         // doSomething
     }
