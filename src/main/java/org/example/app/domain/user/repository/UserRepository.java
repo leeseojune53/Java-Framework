@@ -11,17 +11,17 @@ public class UserRepository {
     public User findByUserId(String userId) {
         Transaction transaction = SessionManager.getSessionManager().getTransaction();
         // TODO
-        var queryResult = transaction.getConnection().select("SELECT name FROM user WHERE user_id = 'TEST'", User.class);
+        var queryResult =
+                transaction.getConnection().select("SELECT name FROM user WHERE user_id = 'TEST'", User.class);
 
-        if(queryResult.isEmpty()) {
+        if (queryResult.isEmpty()) {
             throw new RuntimeException();
         }
 
-        if(queryResult.get(0) instanceof User user) {
+        if (queryResult.get(0) instanceof User user) {
             return user;
         }
 
         throw new RuntimeException();
     }
-
 }
