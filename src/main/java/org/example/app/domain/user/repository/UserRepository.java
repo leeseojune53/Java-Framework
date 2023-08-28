@@ -18,6 +18,7 @@ public class UserRepository {
             throw new RuntimeException();
         }
 
+        // queryResult's Type is Not User
         if (queryResult.get(0) instanceof User user) {
             return user;
         }
