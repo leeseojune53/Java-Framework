@@ -12,7 +12,7 @@ public class UserRepository {
         Transaction transaction = SessionManager.getSessionManager().getTransaction();
         // TODO
         var queryResult =
-                transaction.getConnection().select("SELECT name FROM user WHERE user_id = 'TEST'", User.class);
+                transaction.getConnection().select("SELECT name, password FROM user WHERE user_id = 'TEST'", User.class);
 
         if (queryResult.isEmpty()) {
             throw new RuntimeException();

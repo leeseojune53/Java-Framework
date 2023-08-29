@@ -19,7 +19,8 @@ public class UserService {
 
         System.out.println(user.getName());
 
-        System.out.println("HIHI");
+        System.out.println(user.getPassword());
+
         // doSomething
     }
 

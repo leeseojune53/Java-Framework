@@ -1,12 +1,14 @@
 package org.example.db.connection;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SimpleArthurConnection implements ArthurConnection {
 
@@ -78,20 +80,33 @@ public class SimpleArthurConnection implements ArthurConnection {
 
     private List<Object> getResultSet(ResultSet resultSet, Class<?> clazz) {
         try {
-            List result = new ArrayList();
+            List returnValue = new ArrayList();
 
             List<String> fieldNames = new ArrayList<>();
             for (Field field : clazz.getFields()) {
                 fieldNames.add(field.getName());
             }
+
             while (resultSet.next()) {
+                var newInstance = clazz.getDeclaredConstructor().newInstance();
                 for (String fieldName : fieldNames) {
-                    result.add(resultSet.getObject(fieldName));
+                    newInstance.getClass().getDeclaredField(fieldName).set(newInstance, resultSet.getObject(fieldName));
                 }
+                returnValue.add(newInstance);
             }
 
-            return result;
+            return returnValue;
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
     }
