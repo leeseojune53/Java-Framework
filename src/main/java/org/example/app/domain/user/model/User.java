@@ -3,8 +3,8 @@ package org.example.app.domain.user.model;
 public class User {
 
     private String userId;
-    public String password;
-    public String name;
+    private String password;
+    private String name;
 
     public User(String userId, String password, String name) {
         this.userId = userId;

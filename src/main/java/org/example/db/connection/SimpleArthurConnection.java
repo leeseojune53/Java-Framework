@@ -83,14 +83,19 @@ public class SimpleArthurConnection implements ArthurConnection {
             List returnValue = new ArrayList();
 
             List<String> fieldNames = new ArrayList<>();
-            for (Field field : clazz.getFields()) {
+            for (Field field : clazz.getDeclaredFields()) {
                 fieldNames.add(field.getName());
             }
 
             while (resultSet.next()) {
                 var newInstance = clazz.getDeclaredConstructor().newInstance();
                 for (String fieldName : fieldNames) {
-                    newInstance.getClass().getDeclaredField(fieldName).set(newInstance, resultSet.getObject(fieldName));
+                    var field = newInstance.getClass().getDeclaredField(fieldName);
+                    if(!columnIsExist(resultSet, fieldName)) {
+                        continue;
+                    }
+                    field.setAccessible(true);
+                    field.set(newInstance, resultSet.getObject(fieldName));
                 }
                 returnValue.add(newInstance);
             }
@@ -108,6 +113,15 @@ public class SimpleArthurConnection implements ArthurConnection {
             throw new RuntimeException(e);
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private boolean columnIsExist(ResultSet resultSet, String columnName) {
+        try {
+            resultSet.findColumn(columnName);
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
     }
 }
