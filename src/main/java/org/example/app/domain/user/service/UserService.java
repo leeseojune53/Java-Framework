@@ -2,6 +2,7 @@ package org.example.app.domain.user.service;
 
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
+import org.example.app.domain.user.model.User;
 import org.example.app.domain.user.repository.UserRepository;
 
 @Component
@@ -16,6 +17,10 @@ public class UserService {
     */
     public void doSomething() {
         var user = userRepository.findByUserId("TEST");
+
+        userRepository.save(
+                new User("TESTT", "TEST", "TEST")
+        );
 
         System.out.println(user.getName());
 

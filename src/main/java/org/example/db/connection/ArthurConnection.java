@@ -11,6 +11,8 @@ public interface ArthurConnection {
 
     List<Object> select(String query, Class<?> clazz);
 
+    Object save(Object object);
+
     void commit();
 
     void rollback();

@@ -48,6 +48,47 @@ public class SimpleArthurConnection implements ArthurConnection {
     }
 
     @Override
+    public Object save(Object object) {
+        try {
+            StringBuilder query = new StringBuilder("INSERT INTO user (");
+            for(var field : object.getClass().getDeclaredFields()) {
+                query.append(field.getName()).append(", ");
+            }
+
+            query.delete(query.length() - 2, query.length());
+
+            query.append(") VALUES (");
+
+            for(var field : object.getClass().getDeclaredFields()) {
+                query.append("?, ");
+            }
+
+            query.delete(query.length() - 2, query.length());
+
+            query.append(")");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+
+            int index = 1;
+            for(var field : object.getClass().getDeclaredFields()) {
+                field.setAccessible(true);
+                preparedStatement.setObject(index++, field.get(object));
+            }
+
+            preparedStatement.executeUpdate();
+
+            return object;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());;
+            this.rollback();
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            this.rollback();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void commit() {
         this.close();
         try {

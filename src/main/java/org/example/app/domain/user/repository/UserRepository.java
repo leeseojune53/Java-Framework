@@ -25,4 +25,10 @@ public class UserRepository {
 
         throw new RuntimeException();
     }
+
+    public User save(User user) {
+        Transaction transaction = SessionManager.getSessionManager().getTransaction();
+        // TODO
+        return (User) transaction.getConnection().save(user);
+    }
 }

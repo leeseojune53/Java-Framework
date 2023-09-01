@@ -2,12 +2,12 @@ package org.example.app.domain.user.model;
 
 public class User {
 
-    private String userId;
+    private String user_id;
     private String password;
     private String name;
 
     public User(String userId, String password, String name) {
-        this.userId = userId;
+        this.user_id = userId;
         this.password = password;
         this.name = name;
     }
@@ -16,7 +16,7 @@ public class User {
     }
 
     public String getUserId() {
-        return userId;
+        return user_id;
     }
 
     public String getPassword() {
