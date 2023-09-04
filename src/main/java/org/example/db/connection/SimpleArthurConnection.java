@@ -1,5 +1,7 @@
 package org.example.db.connection;
 
+import org.example.annotataion.Id;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -7,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -83,6 +86,21 @@ public class SimpleArthurConnection implements ArthurConnection {
             this.rollback();
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
+            this.rollback();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteById(Object object, Class<?> clazz) {
+        try {
+            String idFieldName = Arrays.stream(clazz.getDeclaredFields()).filter(it -> it.isAnnotationPresent(Id.class)).findFirst().orElseThrow(() -> new RuntimeException("Id Field doesn't exist")).getName();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE " + idFieldName + " = ?");
+
+            preparedStatement.setObject(1, object);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             this.rollback();
             throw new RuntimeException(e);
         }

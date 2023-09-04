@@ -1,7 +1,10 @@
 package org.example.app.domain.user.model;
 
+import org.example.annotataion.Id;
+
 public class User {
 
+    @Id
     private String user_id;
     private String password;
     private String name;

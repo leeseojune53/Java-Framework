@@ -31,4 +31,9 @@ public class UserRepository {
         // TODO
         return (User) transaction.getConnection().save(user);
     }
+
+    public void deleteById(Object id, Class<?> clazz) {
+        Transaction transaction = SessionManager.getSessionManager().getTransaction();
+        transaction.getConnection().deleteById(id, clazz);
+    }
 }

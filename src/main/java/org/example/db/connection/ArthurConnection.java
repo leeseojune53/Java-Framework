@@ -13,6 +13,8 @@ public interface ArthurConnection {
 
     Object save(Object object);
 
+    void deleteById(Object object, Class<?> clazz);
+
     void commit();
 
     void rollback();
