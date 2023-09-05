@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.aop.multi.MultiProxyFactory;
 import org.example.app.domain.user.service.UserService;
 
 public class RootApplication {
@@ -48,9 +49,7 @@ public class RootApplication {
         //
         //        applyService.dependencyInjectionSuccess();
 
-        //        MultiProxyFactory.generate(UserService.class);
-        UserService userService = new UserService();
+                MultiProxyFactory.generate(UserService.class);
 
-        userService.doSomething();
     }
 }

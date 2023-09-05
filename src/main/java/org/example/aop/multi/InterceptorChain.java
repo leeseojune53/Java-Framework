@@ -1,6 +1,5 @@
 package org.example.aop.multi;
 
-import net.bytebuddy.implementation.Implementation;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
@@ -13,30 +12,12 @@ import java.util.Map;
 
 public class InterceptorChain {
 
-    private static Map<Method, List<Implementation>> implementations;
-
-    public InterceptorChain(Map<Method, List<Implementation>> implementations) {
-        InterceptorChain.implementations = implementations;
-    }
-
-    // Interceptor Chain
-
-    // 재귀호출?
     @RuntimeType
     public static Object intercept(
-            @This Object self, @Origin Method method, @AllArguments Object[] args, @SuperMethod Method superMethod)
-            throws Throwable {
+            @This Object self, @Origin Method method, @AllArguments Object[] args, @SuperMethod Method superMethod) {
+        var callBacks = AnnotationAOPProcessor.getMethodAopFunction().get(method);
 
-        List<Implementation> interceptors = implementations.get(method);
-
-        if (interceptors.isEmpty()) {
-            return superMethod.invoke(self, args);
-        }
-
-        // before
-        var result = superMethod.invoke(self, args);
-        // after
-
-        return result;
+        var chain = new MethodChain(callBacks);
+        return chain.next(self, method, args, superMethod);
     }
 }
