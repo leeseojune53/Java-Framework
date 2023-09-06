@@ -1,4 +1,4 @@
-package org.example.aop.multi;
+package org.example.aop;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
@@ -15,9 +15,9 @@ public abstract class AopSpec {
 
     private static final String BASE_PACKAGE = "org.example";
 
-    abstract Class<? extends Annotation> getAnnotation();
+    protected abstract Class<? extends Annotation> getAnnotation();
 
-    abstract MultiCallback getCallback();
+    protected abstract MultiCallback getCallback();
 
     Map<Method, List<MultiCallback>> getCallbackMap() {
         var annotationTarget = getAnnotation().getAnnotation(Target.class);

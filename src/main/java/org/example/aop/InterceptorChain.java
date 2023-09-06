@@ -1,4 +1,4 @@
-package org.example.aop.multi;
+package org.example.aop;
 
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
