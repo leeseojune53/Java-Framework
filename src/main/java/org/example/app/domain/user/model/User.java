@@ -6,6 +6,7 @@ public class User {
 
     @Id
     private String user_id;
+
     private String password;
     private String name;
 
@@ -15,8 +16,7 @@ public class User {
         this.name = name;
     }
 
-    public User() {
-    }
+    public User() {}
 
     public String getUserId() {
         return user_id;

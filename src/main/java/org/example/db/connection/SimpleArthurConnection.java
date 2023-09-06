@@ -1,7 +1,5 @@
 package org.example.db.connection;
 
-import org.example.annotataion.Id;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -11,7 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+
+import org.example.annotataion.Id;
 
 public class SimpleArthurConnection implements ArthurConnection {
 
@@ -54,7 +53,7 @@ public class SimpleArthurConnection implements ArthurConnection {
     public Object save(Object object) {
         try {
             StringBuilder query = new StringBuilder("INSERT INTO user (");
-            for(var field : object.getClass().getDeclaredFields()) {
+            for (var field : object.getClass().getDeclaredFields()) {
                 query.append(field.getName()).append(", ");
             }
 
@@ -62,7 +61,7 @@ public class SimpleArthurConnection implements ArthurConnection {
 
             query.append(") VALUES (");
 
-            for(var field : object.getClass().getDeclaredFields()) {
+            for (var field : object.getClass().getDeclaredFields()) {
                 query.append("?, ");
             }
 
@@ -73,7 +72,7 @@ public class SimpleArthurConnection implements ArthurConnection {
             PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
 
             int index = 1;
-            for(var field : object.getClass().getDeclaredFields()) {
+            for (var field : object.getClass().getDeclaredFields()) {
                 field.setAccessible(true);
                 preparedStatement.setObject(index++, field.get(object));
             }
@@ -82,7 +81,8 @@ public class SimpleArthurConnection implements ArthurConnection {
 
             return object;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
+            ;
             this.rollback();
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
@@ -94,8 +94,13 @@ public class SimpleArthurConnection implements ArthurConnection {
     @Override
     public void deleteById(Object object, Class<?> clazz) {
         try {
-            String idFieldName = Arrays.stream(clazz.getDeclaredFields()).filter(it -> it.isAnnotationPresent(Id.class)).findFirst().orElseThrow(() -> new RuntimeException("Id Field doesn't exist")).getName();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE " + idFieldName + " = ?");
+            String idFieldName = Arrays.stream(clazz.getDeclaredFields())
+                    .filter(it -> it.isAnnotationPresent(Id.class))
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("Id Field doesn't exist"))
+                    .getName();
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("DELETE FROM user WHERE " + idFieldName + " = ?");
 
             preparedStatement.setObject(1, object);
 
@@ -150,7 +155,7 @@ public class SimpleArthurConnection implements ArthurConnection {
                 var newInstance = clazz.getDeclaredConstructor().newInstance();
                 for (String fieldName : fieldNames) {
                     var field = newInstance.getClass().getDeclaredField(fieldName);
-                    if(!columnIsExist(resultSet, fieldName)) {
+                    if (!columnIsExist(resultSet, fieldName)) {
                         continue;
                     }
                     field.setAccessible(true);

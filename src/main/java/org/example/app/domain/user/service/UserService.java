@@ -16,17 +16,17 @@ public class UserService {
      So if we use Spring, we don't need to write this code.
     */
     public void doSomething() {
-//        var user = userRepository.findByUserId("TEST");
+        //        var user = userRepository.findByUserId("TEST");
 
         userRepository.deleteById("TESTT", User.class);
 
-//        userRepository.save(
-//                new User("TESTT", "TEST", "TEST")
-//        );
-//
-//        System.out.println(user.getName());
-//
-//        System.out.println(user.getPassword());
+        //        userRepository.save(
+        //                new User("TESTT", "TEST", "TEST")
+        //        );
+        //
+        //        System.out.println(user.getName());
+        //
+        //        System.out.println(user.getPassword());
 
         // doSomething
     }

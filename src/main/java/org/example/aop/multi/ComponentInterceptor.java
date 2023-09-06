@@ -1,16 +1,8 @@
 package org.example.aop.multi;
 
-import net.bytebuddy.implementation.bind.annotation.AllArguments;
-import net.bytebuddy.implementation.bind.annotation.Origin;
-import net.bytebuddy.implementation.bind.annotation.RuntimeType;
-import net.bytebuddy.implementation.bind.annotation.SuperCall;
-import net.bytebuddy.implementation.bind.annotation.This;
-import org.example.annotataion.Component;
-
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.concurrent.Callable;
+
+import org.example.annotataion.Component;
 
 public class ComponentInterceptor extends AopSpec {
 
