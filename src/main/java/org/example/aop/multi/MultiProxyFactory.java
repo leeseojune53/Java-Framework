@@ -19,12 +19,6 @@ public class MultiProxyFactory {
                 .load(UserService.class.getClassLoader())
                 .getLoaded();
 
-        var service = (UserService) buddy.newInstance();
-
-        service.doSomethingWithTransaction();
-
-        //        service.doSomethingWithTransaction();
-
-        return null;
+        return buddy.newInstance();
     }
 }

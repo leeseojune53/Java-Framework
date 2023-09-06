@@ -49,7 +49,9 @@ public class RootApplication {
         //
         //        applyService.dependencyInjectionSuccess();
 
-                MultiProxyFactory.generate(UserService.class);
+                var userService = (UserService) MultiProxyFactory.generate(UserService.class);
+
+                userService.doSomethingWithTransaction();
 
     }
 }
