@@ -9,8 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
+import javassist.tools.reflect.Reflection;
 import org.example.annotataion.Id;
+import org.example.core.Pair;
 
 public class SimpleArthurConnection implements ArthurConnection {
 
@@ -54,7 +57,8 @@ public class SimpleArthurConnection implements ArthurConnection {
         try {
             StringBuilder query = new StringBuilder("INSERT INTO user (");
             for (var field : object.getClass().getDeclaredFields()) {
-                query.append(field.getName()).append(", ");
+                String fieldName = getColumName(field);
+                query.append(fieldName).append(", ");
             }
 
             query.delete(query.length() - 2, query.length());
@@ -97,8 +101,10 @@ public class SimpleArthurConnection implements ArthurConnection {
             String idFieldName = Arrays.stream(clazz.getDeclaredFields())
                     .filter(it -> it.isAnnotationPresent(Id.class))
                     .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Id Field doesn't exist"))
-                    .getName();
+                    .map(it -> it.getAnnotation(Id.class).columnName())
+                    .orElseThrow(() -> new RuntimeException("Id Field doesn't exist"));
+            // get @Id field
+
             PreparedStatement preparedStatement =
                     connection.prepareStatement("DELETE FROM user WHERE " + idFieldName + " = ?");
 
@@ -144,22 +150,23 @@ public class SimpleArthurConnection implements ArthurConnection {
 
     private List<Object> getResultSet(ResultSet resultSet, Class<?> clazz) {
         try {
-            List returnValue = new ArrayList();
+            List<Object> returnValue = new ArrayList<>();
 
-            List<String> fieldNames = new ArrayList<>();
+            // fieldName, columnName
+            List<Pair<String, String>> attributes = new ArrayList<>();
             for (Field field : clazz.getDeclaredFields()) {
-                fieldNames.add(field.getName());
+                attributes.add(Pair.of(field.getName(), getColumName(field)));
             }
 
             while (resultSet.next()) {
                 var newInstance = clazz.getDeclaredConstructor().newInstance();
-                for (String fieldName : fieldNames) {
-                    var field = newInstance.getClass().getDeclaredField(fieldName);
-                    if (!columnIsExist(resultSet, fieldName)) {
+                for (Pair<String, String> attribute : attributes) {
+                    var field = newInstance.getClass().getDeclaredField(attribute.x());
+                    if (!columnIsExist(resultSet, attribute.y())) {
                         continue;
                     }
                     field.setAccessible(true);
-                    field.set(newInstance, resultSet.getObject(fieldName));
+                    field.set(newInstance, resultSet.getObject(attribute.y()));
                 }
                 returnValue.add(newInstance);
             }
@@ -186,6 +193,14 @@ public class SimpleArthurConnection implements ArthurConnection {
             return true;
         } catch (SQLException e) {
             return false;
+        }
+    }
+
+    private String getColumName(Field field) {
+        if(field.isAnnotationPresent(Id.class)) {
+            return field.getAnnotation(Id.class).columnName();
+        } else {
+            return field.getName();
         }
     }
 }

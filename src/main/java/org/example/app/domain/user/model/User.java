@@ -4,7 +4,7 @@ import org.example.annotataion.Id;
 
 public class User {
 
-    @Id
+    @Id(columnName = "user_id")
     private String user_id;
 
     private String password;
