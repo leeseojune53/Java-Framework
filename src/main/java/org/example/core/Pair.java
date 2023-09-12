@@ -5,7 +5,7 @@ public class Pair<X, Y> {
     private final X x;
     private final Y y;
 
-    public static <X,Y> Pair<X,Y> of(X x, Y y) {
+    public static <X, Y> Pair<X, Y> of(X x, Y y) {
         return new Pair<>(x, y);
     }
 
@@ -21,5 +21,4 @@ public class Pair<X, Y> {
     public Y y() {
         return y;
     }
-
 }

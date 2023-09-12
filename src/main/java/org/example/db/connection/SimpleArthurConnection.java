@@ -9,9 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import javassist.tools.reflect.Reflection;
 import org.example.annotataion.Id;
 import org.example.core.Pair;
 
@@ -172,8 +170,12 @@ public class SimpleArthurConnection implements ArthurConnection {
             }
 
             return returnValue;
-        } catch (SQLException | NoSuchMethodException | InvocationTargetException | InstantiationException |
-                 IllegalAccessException | NoSuchFieldException e) {
+        } catch (SQLException
+                | NoSuchMethodException
+                | InvocationTargetException
+                | InstantiationException
+                | IllegalAccessException
+                | NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
     }
@@ -188,7 +190,7 @@ public class SimpleArthurConnection implements ArthurConnection {
     }
 
     private String getColumName(Field field) {
-        if(field.isAnnotationPresent(Id.class)) {
+        if (field.isAnnotationPresent(Id.class)) {
             return field.getAnnotation(Id.class).columnName();
         } else {
             return field.getName();

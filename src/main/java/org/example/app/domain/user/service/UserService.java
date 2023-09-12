@@ -8,7 +8,11 @@ import org.example.app.domain.user.repository.UserRepository;
 @Component
 public class UserService {
 
-    private final UserRepository userRepository = new UserRepository();
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /*
      This method code is Similar Spring's @Transactional annotation.

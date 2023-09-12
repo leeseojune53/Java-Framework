@@ -1,12 +1,14 @@
 package org.example;
 
-import org.example.aop.MultiProxyFactory;
+import org.example.aop.ApplicationContext;
 import org.example.app.domain.user.service.UserService;
 
 public class RootApplication {
 
-    public static void main(String[] argss) throws InstantiationException, IllegalAccessException {
-        var userService = (UserService) MultiProxyFactory.generate(UserService.class);
+    public static void main(String[] argss) {
+        ApplicationContext.generateBeans();
+
+        var userService = (UserService) ApplicationContext.beans.get(UserService.class);
 
         userService.doSomethingWithTransaction();
     }
