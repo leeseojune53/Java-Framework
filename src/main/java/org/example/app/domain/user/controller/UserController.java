@@ -11,4 +11,9 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    public void useService() {
+        userService.doSomethingWithTransaction();
+    }
+
 }
