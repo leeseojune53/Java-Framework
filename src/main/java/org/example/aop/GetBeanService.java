@@ -1,13 +1,20 @@
 package org.example.aop;
 
-import java.util.List;
+import static org.example.aop.AopSpec.BASE_PACKAGE;
 
-import org.example.app.domain.user.repository.UserRepository;
-import org.example.app.domain.user.service.UserService;
+import org.reflections.Reflections;
+
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.example.annotataion.Component;
 
 public class GetBeanService {
 
-    public static List<Class<?>> getBeanClasses() {
-        return List.of(UserRepository.class, UserService.class);
+    public static Set<Class<?>> getBeanClasses() {
+        return new Reflections(BASE_PACKAGE)
+                .getTypesAnnotatedWith(Component.class).stream()
+                        .filter(it -> !it.isAnnotation())
+                        .collect(Collectors.toSet());
     }
 }

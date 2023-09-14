@@ -1,9 +1,9 @@
 package org.example.app.domain.user.controller;
 
-import org.example.annotataion.Component;
+import org.example.annotataion.Controller;
 import org.example.app.domain.user.service.UserService;
 
-@Component
+@Controller
 public class UserController {
 
     private final UserService userService;
@@ -15,5 +15,4 @@ public class UserController {
     public void useService() {
         userService.doSomethingWithTransaction();
     }
-
 }

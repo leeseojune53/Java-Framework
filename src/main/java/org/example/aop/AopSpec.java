@@ -13,7 +13,7 @@ import java.util.Map;
 
 public abstract class AopSpec {
 
-    private static final String BASE_PACKAGE = "org.example";
+    public static final String BASE_PACKAGE = "org.example";
 
     protected abstract Class<? extends Annotation> getAnnotation();
 
