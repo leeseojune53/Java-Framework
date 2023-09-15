@@ -20,6 +20,7 @@ public class ApplicationContext {
         var newRetrySet = new HashSet<Class<?>>();
 
         // TODO find circular dependency
+        // compare beanCount and attempt is not good. if creating more beans this code will reduce performance
 
         if(attempt > beanCount) throw new RuntimeException("Circular dependency detected.");
 
