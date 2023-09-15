@@ -9,15 +9,19 @@ import java.util.Set;
 public class ApplicationContext {
 
     public static Map<Class<?>, Object> beans = new HashMap<>();
+    public static int beanCount;
 
     public static void generateBeans() {
-        generateRecursion(GetBeanService.getBeanClasses());
+        beanCount = GetBeanService.getBeanClasses().size();
+        generateRecursion(GetBeanService.getBeanClasses(), 0);
     }
 
-    private static void generateRecursion(Set<Class<?>> retrySet) {
+    private static void generateRecursion(Set<Class<?>> retrySet, int attempt) {
         var newRetrySet = new HashSet<Class<?>>();
 
-        System.out.println("HI");
+        // TODO find circular dependency
+
+        if(attempt > beanCount) throw new RuntimeException("Circular dependency detected.");
 
         retrySet.forEach(it -> {
             try {
@@ -27,6 +31,7 @@ public class ApplicationContext {
             }
         });
 
-        if (!newRetrySet.isEmpty()) generateRecursion(newRetrySet);
+
+        if (!newRetrySet.isEmpty()) generateRecursion(newRetrySet, attempt + 1);
     }
 }
