@@ -22,7 +22,7 @@ public class ApplicationContext {
         // TODO find circular dependency
         // compare beanCount and attempt is not good. if creating more beans this code will reduce performance
 
-        if(attempt > beanCount) throw new RuntimeException("Circular dependency detected.");
+        if(attempt > beanCount) throw new RuntimeException("Circular dependency detected." + retrySet.toString());
 
         retrySet.forEach(it -> {
             try {

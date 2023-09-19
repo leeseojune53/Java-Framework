@@ -14,6 +14,9 @@ dependencies {
     implementation("net.bytebuddy:byte-buddy:1.14.6")
     implementation("org.reflections:reflections:0.10.2")
     implementation("mysql:mysql-connector-java:8.0.33")
+
+    compileOnly("javax.servlet:javax.servlet-api:4.0.1")
+
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

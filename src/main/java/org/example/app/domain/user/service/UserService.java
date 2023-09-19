@@ -10,11 +10,9 @@ import org.example.app.domain.user.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserController userController;
 
-    public UserService(UserRepository userRepository, UserController userController) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userController = userController;
     }
 
     /*
