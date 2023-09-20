@@ -20,8 +20,5 @@ public class UserController {
 
     // TODO make Tomcat server
     @Endpoint(url = "/users", method = HttpMethod.POST)
-    public void createUser() {
-
-    }
-
+    public void createUser() {}
 }

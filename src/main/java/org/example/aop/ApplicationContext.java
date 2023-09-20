@@ -22,7 +22,7 @@ public class ApplicationContext {
         // TODO find circular dependency
         // compare beanCount and attempt is not good. if creating more beans this code will reduce performance
 
-        if(attempt > beanCount) throw new RuntimeException("Circular dependency detected." + retrySet.toString());
+        if (attempt > beanCount) throw new RuntimeException("Circular dependency detected." + retrySet.toString());
 
         retrySet.forEach(it -> {
             try {
@@ -31,7 +31,6 @@ public class ApplicationContext {
                 newRetrySet.add(it);
             }
         });
-
 
         if (!newRetrySet.isEmpty()) generateRecursion(newRetrySet, attempt + 1);
     }

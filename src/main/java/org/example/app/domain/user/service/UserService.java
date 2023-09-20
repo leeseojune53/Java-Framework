@@ -2,7 +2,6 @@ package org.example.app.domain.user.service;
 
 import org.example.annotataion.Component;
 import org.example.annotataion.Transactional;
-import org.example.app.domain.user.controller.UserController;
 import org.example.app.domain.user.model.User;
 import org.example.app.domain.user.repository.UserRepository;
 
