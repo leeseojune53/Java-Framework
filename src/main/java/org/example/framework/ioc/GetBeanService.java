@@ -1,13 +1,13 @@
-package org.example.aop;
+package org.example.framework.ioc;
 
-import static org.example.aop.AopSpec.BASE_PACKAGE;
+import static org.example.framework.aop.AopSpec.BASE_PACKAGE;
 
 import org.reflections.Reflections;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.example.annotataion.Component;
+import org.example.framework.annotataion.Component;
 
 public class GetBeanService {
 

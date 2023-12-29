@@ -1,4 +1,4 @@
-package org.example.aop;
+package org.example.framework.aop;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;

@@ -1,7 +1,7 @@
 package org.example.app.domain.user.controller;
 
-import org.example.annotataion.Controller;
-import org.example.annotataion.Endpoint;
+import org.example.framework.annotataion.Controller;
+import org.example.framework.annotataion.Endpoint;
 import org.example.app.domain.user.service.UserService;
 import org.example.core.HttpMethod;
 

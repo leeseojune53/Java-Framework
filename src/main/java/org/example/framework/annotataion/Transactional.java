@@ -1,4 +1,4 @@
-package org.example.annotataion;
+package org.example.framework.annotataion;
 
 import static java.lang.annotation.ElementType.METHOD;
 

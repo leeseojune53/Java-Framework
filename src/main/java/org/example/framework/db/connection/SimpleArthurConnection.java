@@ -1,4 +1,4 @@
-package org.example.db.connection;
+package org.example.framework.db.connection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.example.annotataion.Id;
+import org.example.framework.annotataion.Id;
 import org.example.core.Pair;
 
 public class SimpleArthurConnection implements ArthurConnection {

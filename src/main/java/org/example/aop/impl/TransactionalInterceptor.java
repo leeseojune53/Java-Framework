@@ -2,11 +2,11 @@ package org.example.aop.impl;
 
 import java.lang.annotation.Annotation;
 
-import org.example.annotataion.Transactional;
-import org.example.aop.AopSpec;
-import org.example.aop.MultiCallback;
-import org.example.db.SessionManager;
-import org.example.db.transaction.Transaction;
+import org.example.framework.annotataion.Transactional;
+import org.example.framework.aop.AopSpec;
+import org.example.framework.aop.MultiCallback;
+import org.example.framework.db.SessionManager;
+import org.example.framework.db.transaction.Transaction;
 
 public class TransactionalInterceptor extends AopSpec {
 

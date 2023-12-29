@@ -1,6 +1,6 @@
 package org.example.app.domain.apply.service;
 
-import org.example.annotataion.Component;
+import org.example.framework.annotataion.Component;
 import org.example.app.domain.auth.service.AuthService;
 
 @Component

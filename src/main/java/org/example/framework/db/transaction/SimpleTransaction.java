@@ -1,6 +1,6 @@
-package org.example.db.transaction;
+package org.example.framework.db.transaction;
 
-import org.example.db.connection.ArthurConnection;
+import org.example.framework.db.connection.ArthurConnection;
 
 public class SimpleTransaction implements Transaction {
 

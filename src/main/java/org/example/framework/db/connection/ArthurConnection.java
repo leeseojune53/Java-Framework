@@ -1,4 +1,4 @@
-package org.example.db.connection;
+package org.example.framework.db.connection;
 
 import java.util.List;
 

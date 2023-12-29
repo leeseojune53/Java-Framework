@@ -1,9 +1,9 @@
 package org.example.app.domain.user.repository;
 
-import org.example.annotataion.Component;
+import org.example.framework.annotataion.Component;
 import org.example.app.domain.user.model.User;
-import org.example.db.SessionManager;
-import org.example.db.transaction.Transaction;
+import org.example.framework.db.SessionManager;
+import org.example.framework.db.transaction.Transaction;
 
 @Component
 public class UserRepository {

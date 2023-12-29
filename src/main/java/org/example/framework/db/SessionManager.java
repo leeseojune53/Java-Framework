@@ -1,8 +1,8 @@
-package org.example.db;
+package org.example.framework.db;
 
-import org.example.db.connection.ConnectionFactory;
-import org.example.db.transaction.SimpleTransaction;
-import org.example.db.transaction.Transaction;
+import org.example.framework.db.connection.ConnectionFactory;
+import org.example.framework.db.transaction.SimpleTransaction;
+import org.example.framework.db.transaction.Transaction;
 
 public class SessionManager {
 

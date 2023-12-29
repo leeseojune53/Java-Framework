@@ -1,6 +1,6 @@
 package org.example.app.domain.user.model;
 
-import org.example.annotataion.Id;
+import org.example.framework.annotataion.Id;
 
 public class User {
 

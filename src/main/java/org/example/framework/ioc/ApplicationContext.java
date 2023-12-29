@@ -1,4 +1,4 @@
-package org.example.aop;
+package org.example.framework.ioc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

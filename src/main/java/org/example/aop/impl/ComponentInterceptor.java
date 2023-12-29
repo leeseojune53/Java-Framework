@@ -2,9 +2,9 @@ package org.example.aop.impl;
 
 import java.lang.annotation.Annotation;
 
-import org.example.annotataion.Component;
-import org.example.aop.AopSpec;
-import org.example.aop.MultiCallback;
+import org.example.framework.annotataion.Component;
+import org.example.framework.aop.AopSpec;
+import org.example.framework.aop.MultiCallback;
 
 public class ComponentInterceptor extends AopSpec {
 

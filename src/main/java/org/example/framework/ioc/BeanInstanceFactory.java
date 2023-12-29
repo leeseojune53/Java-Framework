@@ -1,4 +1,4 @@
-package org.example.aop;
+package org.example.framework.ioc;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.MethodDelegation;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 
-import org.example.app.domain.user.service.UserService;
+import org.example.framework.aop.InterceptorChain;
 
 public class BeanInstanceFactory {
 
@@ -22,7 +22,7 @@ public class BeanInstanceFactory {
                 .method(ElementMatchers.any())
                 .intercept(MethodDelegation.to(InterceptorChain.class))
                 .make()
-                .load(UserService.class.getClassLoader())
+                .load(clazz.getClassLoader())
                 .getLoaded();
 
         if (buddy.getDeclaredConstructors().length == 0 || buddy.getDeclaredConstructors().length > 1)
